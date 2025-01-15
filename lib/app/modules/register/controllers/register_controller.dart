@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:myapp/app/modules/dashboard/views/dashboard_view.dart';
 import 'package:myapp/app/utils/api.dart';
+
 
 class RegisterController extends GetxController {
   final _getConnect = GetConnect();
@@ -40,6 +40,7 @@ class RegisterController extends GetxController {
       );
     }
   }
+
   @override
   void onInit() {
     super.onInit();
@@ -52,12 +53,12 @@ class RegisterController extends GetxController {
 
   @override
   void onClose() {
-    nameController.dispose();
     emailController.dispose();
     passwordController.dispose();
+    nameController.dispose();
     passwordConfirmationController.dispose();
     super.onClose();
   }
-
-
 }
+
+

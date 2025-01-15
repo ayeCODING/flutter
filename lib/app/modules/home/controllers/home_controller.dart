@@ -10,10 +10,9 @@ class HomeController extends GetxController {
   late Timer _pindah;
   final authToken = GetStorage();
 
-
   @override
   void onInit() {
-    _pindah = Timer.periodic(
+ _pindah = Timer.periodic(
   const Duration(seconds: 4),
   (timer) => authToken.read('token') == null
       ? Get.off(
@@ -22,7 +21,6 @@ class HomeController extends GetxController {
         )
       : Get.off(() => const DashboardView()),
 );
-
     super.onInit();
   }
 

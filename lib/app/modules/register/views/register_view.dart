@@ -9,7 +9,7 @@ import '../controllers/register_controller.dart';
 class RegisterView extends GetView<RegisterController> {
   const RegisterView({super.key});
   @override
-  Widget build(BuildContext context) {
+Widget build(BuildContext context) {
     RegisterController controller = Get.put(RegisterController());
     return Scaffold(
       backgroundColor: HexColor('#feeee8'),
@@ -24,12 +24,12 @@ class RegisterView extends GetView<RegisterController> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+              padding: const EdgeInsets.symmetric(horizontal: 15),
               child: TextField(
                 controller: controller.nameController,
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
-                  labelText: 'Nama',
+                  labelText: 'Full Name',
                   hintText: 'Masukan Nama',
                 ),
               ),
