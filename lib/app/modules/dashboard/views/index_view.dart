@@ -3,25 +3,21 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 import 'package:myapp/app/data/event_response.dart';
-import 'package:myapp/app/modules/dashboard/controllers/dashboard_controller.dart';
-import 'package:myapp/app/modules/dashboard/views/event_detail_view.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
+
+import '../controllers/dashboard_controller.dart';
+import 'event_detail_view.dart';
 
 class IndexView extends GetView {
   const IndexView({super.key});
   @override
   Widget build(BuildContext context) {
-    // Menginisialisasi controller untuk Dashboard menggunakan GetX
     DashboardController controller = Get.put(DashboardController());
-
-    // Membuat ScrollController untuk mengontrol scroll pada ListView
     final ScrollController scrollController = ScrollController();
-
     return Scaffold(
       appBar: AppBar(
-        // Membuat AppBar dengan judul "Event List"
         title: const Text('Event List'),
-        centerTitle: true, // Menjadikan judul di tengah AppBar
+        centerTitle: true,
       ),
       body: Padding(
         padding:
@@ -58,7 +54,10 @@ class IndexView extends GetView {
                 return ZoomTapAnimation(
                   onTap: () {
                     // Navigasi ke EventDetailView saat item ditekan
-                    Get.to(() => EventDetailView(), id: 1);
+                    Get.to(
+                      () => EventDetailView(
+                          eventId: snapshot.data!.events![index].id!),
+                    );
                   },
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment
@@ -84,7 +83,7 @@ class IndexView extends GetView {
                       const SizedBox(height: 16), // Jarak antara elemen
                       // Menampilkan judul event
                       Text(
-                        'title',
+                        snapshot.data!.events![index].name.toString(),
                         style: const TextStyle(
                           fontSize: 24,
                           fontWeight:
@@ -94,7 +93,7 @@ class IndexView extends GetView {
                       const SizedBox(height: 8), // Jarak antara elemen
                       // Menampilkan deskripsi event
                       Text(
-                        'description',
+                        snapshot.data!.events![index].description.toString(),
                         style: const TextStyle(
                           fontSize: 16,
                           color: Colors.grey, // Warna teks abu-abu
@@ -112,7 +111,8 @@ class IndexView extends GetView {
                               width: 8), // Jarak antara ikon dan teks
                           Expanded(
                             child: Text(
-                              'location', // Lokasi event
+                              snapshot.data!.events![index].location
+                                  .toString(), // Lokasi event
                               style: const TextStyle(
                                 fontSize: 16,
                                 color: Colors.black, // Warna teks hitam

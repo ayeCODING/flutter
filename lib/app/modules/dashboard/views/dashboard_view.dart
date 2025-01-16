@@ -9,6 +9,8 @@ class DashboardView extends GetView<DashboardController> {
   @override
   Widget build(BuildContext context) {
     DashboardController controller = Get.put(DashboardController());
+    final ScrollController scrollController = ScrollController();
+
     return Obx(
       () => Scaffold(
         body: Navigator(
@@ -32,19 +34,19 @@ class DashboardView extends GetView<DashboardController> {
           items: const [
             BottomNavigationBarItem(
               icon: Icon(Icons.home),
-              label: 'Index',
+              label: 'Halaman Event',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.event),
-              label: 'Your Event',
+              label: 'Event Saya',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.person),
-              label: 'Profile',
+              label: 'Profile Saya',
             ),
           ],
         ),
       ),
     );
-    }
+  }
 }
